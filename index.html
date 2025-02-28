@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Heartbeat Animation</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Andale Mono', monospace;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .animation-container {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .transition-text {
+            font-size: 2rem;
+            color: black;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            position: absolute;
+            text-align: center;
+        }
+        .pulse-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0px;
+            height: 4px;
+            background-color: black;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+        }
+        .menu-texts {
+            position: absolute;
+            top: 42%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10vw;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+        .menu-texts a {
+            font-size: 1rem;
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+        .menu-texts a:hover {
+            color: gray;
+        }
+        @keyframes stretchFromCenter {
+            0% { width: 0px; opacity: 1; left: 50%; transform: translateX(-50%); }
+            100% { width: 100vw; opacity: 1; left: 0%; transform: translateX(0%); }
+        }
+        @keyframes heartbeatPulse {
+            0% { transform: scaleY(1); opacity: 1; }
+            25% { transform: scaleY(1.8); opacity: 1; }
+            50% { transform: scaleY(0.6); opacity: 0.8; }
+            75% { transform: scaleY(1.3); opacity: 1; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <div class="transition-text" id="text">whenimgonelookformeinthesouth</div>
+        <div class="pulse-line" id="pulseLine"></div>
+        <div class="menu-texts" id="menuTexts">
+            <a href="collections.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="meditations.html">Meditations</a>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            let textElement = document.getElementById("text");
+            let pulseLine = document.getElementById("pulseLine");
+            let menuTexts = document.getElementById("menuTexts");
+            
+            textElement.style.opacity = "1";
+            textElement.style.position = "absolute";
+            textElement.style.top = "50%";
+            textElement.style.left = "50%";
+            textElement.style.transform = "translate(-50%, -50%)";
+            
+            setTimeout(() => {
+                textElement.style.opacity = "0";
+                setTimeout(() => {
+                    setTimeout(() => {  // Increased delay before "78!" appears
+                        textElement.textContent = "78!";
+                        textElement.style.opacity = "1";
+                        setTimeout(() => {
+                            textElement.style.opacity = "0";
+                            setTimeout(() => {
+                                setTimeout(() => {
+                                    pulseLine.style.opacity = "1";
+                                    pulseLine.style.animation = "stretchFromCenter 1.5s ease-in-out forwards, heartbeatPulse 1.2s infinite alternate";
+                                    setTimeout(() => {
+                                        menuTexts.style.opacity = "1";
+                                    }, 4000); // Menu texts appear after 4 seconds
+                                }, 2000);
+                            }, 2000);
+                        }, 4000);
+                    }, 3000); // Extended delay before "78!" appears
+                }, 2000);
+            }, 3000);
+        }, 2000);
+    </script>
+</body>
+</html>

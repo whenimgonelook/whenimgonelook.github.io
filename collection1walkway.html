@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silhouettes of my Life - Walkway</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Andale Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .video-container {
+            display: flex;
+            gap: 50px; /* Increased space between images */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .video-thumbnail {
+            width: 45%; /* Adjusts size while keeping them next to each other */
+            max-width: 500px; /* Controls max size */
+            cursor: pointer;
+        }
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-thumbnail">
+            <a href="https://www.youtube.com/watch?v=4LzDALLMAok" target="_blank">
+                <img src="thumbnail1.jpg" alt="Video 1 Thumbnail">
+            </a>
+        </div>
+        <div class="video-thumbnail">
+            <a href="https://www.youtube.com/watch?v=3aMP8SknJ2w" target="_blank">
+                <img src="thumbnail2.jpg" alt="Video 2 Thumbnail">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
